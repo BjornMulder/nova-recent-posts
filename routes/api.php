@@ -1,7 +1,9 @@
 <?php
 
+use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Mattmangoni\RecentPosts\Resources\RecentPostResource;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/endpoint', function (Request $request) {
-//     //
-// });
+Route::get('fetch-latest', function () {
+    $recentPosts = Post::with('author')
+        ->where('created_at', '>=', now()->subDays(2))
+        ->take(5)
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+    return response()->json(RecentPostResource::collection($recentPosts), 200);
+});
