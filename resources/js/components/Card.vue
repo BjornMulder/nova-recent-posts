@@ -1,7 +1,7 @@
 <template>
-    <card class="flex flex-col items-center justify-center">
-        <div class="px-3 py-3">
-            <h1 class="text-center text-3xl text-80 font-light">Recent Posts</h1>
+    <card>
+        <div class="px-6 pt-4">
+            <h1 class="text-lg text-90 font-light">Recent Posts</h1>
         </div>
     </card>
 </template>
