@@ -6,7 +6,7 @@ This will add a simple full width card in your dashboard with a list of recent p
 You obviously need to have a basic blogging system already setup in order to use this.
 It just need a `posts` table and a with at least `title` column in it and a one-to-many relationship with the user.
 
-Both the `posts model` and the `relationship name` can be altered from the card constructor.
+Both the `posts model` and the `relationship name` - as well as other parameters - can be altered from the card constructor.
 
  ## Installation
 
@@ -37,3 +37,4 @@ public function cards()
         ),
     ];
 }
+```
