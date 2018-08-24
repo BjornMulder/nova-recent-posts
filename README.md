@@ -2,7 +2,12 @@
 
 ## What is this package about?
 This is nothing more than a simple test to get a better understanding of Nova cards development.
-This will add a simple full width card in your dashboard with a list of 
+This will add a simple full width card in your dashboard with a list of recent posts.
+
+You obviously need to have a basic blogging system already setup in order to use this.
+It just need a `posts` table and a with at least `title` column in it and a one-to-many relationship with the user.
+
+Both the `posts model` and the `relationship name` can be set in a configuration file.
 
  ## Installation
 
