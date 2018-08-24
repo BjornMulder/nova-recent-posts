@@ -1,25 +1,15 @@
 <?php
 
-use App\Post;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Mattmangoni\RecentPosts\Helpers\ConfigResolver;
 use Mattmangoni\RecentPosts\Resources\RecentPostResource;
 
-/*
-|--------------------------------------------------------------------------
-| Card API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you may register API routes for your card. These routes
-| are loaded by the ServiceProvider of your card. You're free to add
-| as many additional routes to this file as your card may require.
-|
-*/
-
 Route::get('fetch-latest', function () {
-    $recentPosts = Post::with('author')
+    $options = ConfigResolver::fetch();
+
+    $recentPosts = $options['posts_model']::with($options['author_relationship_name'])
         ->where('created_at', '>=', now()->subDays(2))
-        ->take(5)
+        ->take($options['posts_number'])
         ->orderBy('created_at', 'desc')
         ->get();
 

@@ -3,6 +3,7 @@
 namespace Mattmangoni\RecentPosts\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Mattmangoni\RecentPosts\Helpers\ConfigResolver;
 
 class RecentPostResource extends JsonResource
 {
@@ -14,11 +15,15 @@ class RecentPostResource extends JsonResource
      */
     public function toArray($request)
     {
+        $options = ConfigResolver::fetch();
+
         return [
             'id' => $this->id,
+            'postsUriKey' => $options['posts_uri_key'],
+            'usersUriKey' => $options['users_uri_key'],
             'title' => $this->title,
-            'created_at' => $this->created_at->format('m-d-Y'),
-            'author' => $this->author->name
+            'created_at' => $this->created_at->format($options['date_format']),
+            'author' => new AuthorResource($this->{$options['author_relationship_name']})
         ];
     }
 }

@@ -20,6 +20,10 @@ class CardServiceProvider extends ServiceProvider
             $this->routes();
         });
 
+        $this->publishes([
+            __DIR__ . '/../config/recent-posts.php' => config_path('recent-posts.php')
+        ], 'recent-posts-config');
+
         Nova::serving(function (ServingNova $event) {
             Nova::script('recent-posts', __DIR__.'/../dist/js/card.js');
             Nova::style('recent-posts', __DIR__.'/../dist/css/card.css');
