@@ -4,6 +4,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/mattmangoni/nova-recent-posts.svg?style=flat-square)](https://packagist.org/packages/mattmangoni/nova-recent-posts)
 
 ## What is this package about?
+
 This will add a simple full width card in your dashboard with a list of recent posts.
 
 You obviously need to have a basic blogging system already setup in order to use this.
