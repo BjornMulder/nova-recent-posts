@@ -21,7 +21,7 @@ class RecentPostResource extends JsonResource
             'usersUriKey' => RecentPosts::getOption('userUriKey'),
             'title' => $this->title,
             'created_at' => $this->created_at->format(RecentPosts::getOption('dateFormat')),
-            'author' => new AuthorResource($this->{RecentPosts::getOption('authorRelationName')})
+            'author' => new AuthorResource($this->whenLoaded(RecentPosts::getOption('authorRelationName')))
         ];
     }
 }
