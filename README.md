@@ -1,7 +1,5 @@
 # Nova Recent Posts Card
-
-
-[![Packagist](https://img.shields.io/packagist/v/mattmangoni/nova-recent-posts.svg)](https://packagist.org/packages/mattmangoni/nova-recent-posts) [![Total Downloads](https://img.shields.io/packagist/dt/mattmangoni/nova-recent-posts.svg?style=flat-square)](https://packagist.org/packages/mattmangoni/nova-recent-posts)
+[![Latest version](https://img.shields.io/packagist/v/mattmangoni/nova-recent-posts.svg)](https://packagist.org/packages/mattmangoni/nova-recent-posts) [![Total Downloads](https://img.shields.io/packagist/dt/mattmangoni/nova-recent-posts.svg?style=flat-square)](https://packagist.org/packages/mattmangoni/nova-recent-posts)
 
 ## What is this package about?
 
