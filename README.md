@@ -1,13 +1,12 @@
 # Nova Recent Posts Card
 
 ## What is this package about?
-This is nothing more than a simple test to get a better understanding of Nova cards development.
 This will add a simple full width card in your dashboard with a list of recent posts.
 
 You obviously need to have a basic blogging system already setup in order to use this.
 It just need a `posts` table and a with at least `title` column in it and a one-to-many relationship with the user.
 
-Both the `posts model` and the `relationship name` can be set in a configuration file.
+Both the `posts model` and the `relationship name` can be altered from the card constructor.
 
  ## Installation
 
@@ -27,29 +26,14 @@ public function cards()
 {
     return [
         // ...
-        new \Mattmangoni\RecentPosts\RecentPosts,
+
+        // all the parameters are optional
+        new \Mattmangoni\RecentPosts\RecentPosts(
+            string $authorRelationName = 'user',
+            string $dateFormat = 'Y-m-d',
+            int $postsNumber = 5,
+            string $postModel = 'App\Post',
+            string $userUriKey = 'users'
+        ),
     ];
 }
-
-```
-
-This card also includes a configuration file with the following values: 
-
-```php
-    return [
-        'posts_uri_key' => 'posts',
-        'users_uri_key' => 'users',
-        'posts_model' => 'App\Post',
-        'author_relationship_name' => 'user',
-        'date_format' => 'Y-m-d',
-        'posts_number' => 5,
-    ];
-```
-
-If you want to customize these values, make sure to publish the configuration file:
-
-```bash
-    php artisan vendor:publish --tag=recent-posts-config
-```
-
-You can then access the config file from `config/recent-posts.php`
