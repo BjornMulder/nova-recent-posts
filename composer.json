@@ -1,6 +1,6 @@
 {
-    "name": "mattmangoni/recent-posts",
-    "description": "A Laravel Nova card.",
+    "name": "mattmangoni/nova-recent-posts",
+    "description": "A simple recent blog posts card for Laravel Nova.",
     "keywords": [
         "laravel",
         "nova"
