@@ -70,14 +70,15 @@ class RecentPosts extends Card
      *
      * @param string $authorRelationName
      * @param string $dateFormat
+     * @param int $postsNumber
      * @param string $postModel
      * @param string $userUriKey
      */
     public function __construct(
-        string $authorRelationName = 'user',
+        string $authorRelationName = 'author',
         string $dateFormat = 'Y-m-d',
         int $postsNumber = 5,
-        string $postModel = 'App\Post',
+        string $postModel = 'Mattmangoni\NovaBlogifyTool\Models\Post',
         string $userUriKey = 'users'
     ) {
         static::$postModel = $postModel;
