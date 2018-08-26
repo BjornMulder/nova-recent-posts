@@ -3,8 +3,8 @@
         <div class="px-6 py-4">
             <h1 class="text-lg text-90 font-light">Recent Posts</h1>
             <section class="mt-4">
-                <template v-if="empty">
-                    <p>No recent post to show.</p>
+                <template v-if="errorMessage">
+                    <p class="text-80">{{ errorMessage }}</p>
                 </template>
 
                 <template v-else>
@@ -38,14 +38,16 @@ export default {
     data() {
         return {
             posts: [],
-            empty: false
+            errorMessage: null
         }
     },
 
     mounted() {
         Nova.request().get('/nova-vendor/recent-posts/fetch-latest')
             .then(response => this.posts = response.data)
-            .catch(() => this.empty = true)
+            .catch(error => {
+                this.errorMessage = error.response.data.message
+            })
     },
 }
 </script>

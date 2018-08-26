@@ -3,10 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use Mattmangoni\RecentPosts\RecentPosts;
 use Mattmangoni\RecentPosts\Resources\RecentPostResource;
+use Mattmangoni\RecentPosts\Responses\RecentPostsResponder;
 
 Route::get('fetch-latest', function () {
     if (!Schema::hasTable(RecentPosts::getOption('postUriKey'))) {
-        return response()->json([], 200);
+        return RecentPostsResponder::tablesNotFound();
     }
 
     $recentPosts = (RecentPosts::getOption('postModel'))::with(RecentPosts::getOption('authorRelationName'))
