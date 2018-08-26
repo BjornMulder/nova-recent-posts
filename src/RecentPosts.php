@@ -78,7 +78,7 @@ class RecentPosts extends Card
         string $authorRelationName = 'author',
         string $dateFormat = 'Y-m-d',
         int $postsNumber = 5,
-        string $postModel = 'Mattmangoni\NovaBlogifyTool\Models\Post',
+        string $postModel = 'App\Post',
         string $userUriKey = 'users'
     ) {
         static::$postModel = $postModel;
