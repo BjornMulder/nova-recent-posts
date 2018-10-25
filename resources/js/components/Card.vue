@@ -19,7 +19,7 @@
                                 </router-link> --
                             </span>
                             <span>Published on <strong>{{ post.created_at }}</strong> by
-                                <router-link :to="`/resources/${post.usersUriKey}/${post.id}`" class="no-underline font-bold dim text-primary">
+                                <router-link :to="`/resources/${post.usersUriKey}/${post.author.id}`" class="no-underline font-bold dim text-primary">
                                     <strong>{{ post.author.name }}</strong>
                                 </router-link>
                             </span>
