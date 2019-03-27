@@ -1,7 +1,7 @@
 <template>
     <card>
         <div class="px-6 py-4">
-            <h1 class="text-lg text-90 font-light">Recent Posts</h1>
+            <h1 class="text-lg text-90 font-light">Activiteiten</h1>
             <section class="mt-4">
                 <template v-if="errorMessage">
                     <p class="text-80">{{ errorMessage }}</p>
@@ -16,11 +16,6 @@
                             <span>
                                 <router-link :to="`/resources/${post.postsUriKey}/${post.id}`" class="no-underline font-bold dim text-primary">
                                     <strong>{{ post.title }}</strong>
-                                </router-link> --
-                            </span>
-                            <span>Published on <strong>{{ post.created_at }}</strong> by
-                                <router-link :to="`/resources/${post.usersUriKey}/${post.author.id}`" class="no-underline font-bold dim text-primary">
-                                    <strong>{{ post.author.name }}</strong>
                                 </router-link>
                             </span>
                         </p>
