@@ -1,26 +1,19 @@
 <?php
 
-namespace Mattmangoni\RecentPosts\Resources;
-
+use Illuminate\Support\Facades\Route;
 use Mattmangoni\RecentPosts\RecentPosts;
-use Illuminate\Http\Resources\Json\JsonResource;
+use Mattmangoni\RecentPosts\Resources\RecentPostResource;
+use Mattmangoni\RecentPosts\Responses\RecentPostsResponder;
 
-class RecentPostResource extends JsonResource
-{
-    /**
-     * Transform the resource into an array.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-    public function toArray($request)
-    {
-        return [
-            'id' => $this->id,
-            'postsUriKey' => RecentPosts::getOption('postUriKey'),
-            'usersUriKey' => RecentPosts::getOption('userUriKey'),
-            'title' => $this->name,
-            'created_at' => $this->created_at->format(RecentPosts::getOption('dateFormat')),
-        ];
+Route::get('fetch-latest', function () {
+    if (!Schema::hasTable(RecentPosts::getOption('postUriKey'))) {
+        return RecentPostsResponder::tablesNotFound();
     }
-}
+
+    $recentPosts = (RecentPosts::getOption('postModel'))
+        ::take(RecentPosts::getOption('postsNumber'))
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+    return response()->json(RecentPostResource::collection($recentPosts), 200);
+});
