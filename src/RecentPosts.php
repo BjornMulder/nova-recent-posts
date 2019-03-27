@@ -11,7 +11,7 @@ class RecentPosts extends Card
      *
      * @var string
      */
-    public $width = 'full';
+    public $width = '1/3';
 
     /**
      * Your main application post model.
