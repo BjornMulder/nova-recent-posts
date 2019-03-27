@@ -10,7 +10,7 @@ Route::get('fetch-latest', function () {
         return RecentPostsResponder::tablesNotFound();
     }
 
-    $recentPosts = (RecentPosts::getOption('postModel'))::with(RecentPosts::getOption('authorRelationName'))
+    $recentPosts = (RecentPosts::getOption('postModel'))
         ->where('created_at', '>=', now()->subDays(2))
         ->take(RecentPosts::getOption('postsNumber'))
         ->orderBy('created_at', 'desc')
